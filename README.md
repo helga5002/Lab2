@@ -82,7 +82,7 @@ graph TD
     A([Начало]) --> B[/Ввести: N и массив a/]
     B --> Init[counterOvers = 0, counterNotOvers = 0]
     Init --> C{i < N}
-    C -- Да --> CalcSum[Найти сумму делителей a[i]]
+    C -- Да --> CalcSum[Найти сумму делителей эл-та]
     CalcSum --> CheckOver{a[i] > 0 И sum > a[i]?}
     CheckOver -- Да --> AddOver[aOvers[counterOvers] = a[i]; counterOvers++]
     CheckOver -- Нет --> AddNotOver[aNotOvers[counterNotOvers] = a[i]; counterNotOvers++]
