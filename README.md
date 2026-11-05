@@ -80,25 +80,25 @@
 ```mermaid
 graph TD
     A([Начало]) --> B[/Ввести: N и массив a/]
-    B --> Init[counterOvers = 0, counterNotOvers = 0]
-    Init --> C{i < N}
-    C -- Да --> CalcSum[Найти сумму делителей a[i]]
-    CalcSum --> CheckOver{a[i] > 0 И sum > a[i]?}
-    CheckOver -- Да --> AddOver[aOvers[counterOvers] = a[i]; counterOvers++]
-    CheckOver -- Нет --> AddNotOver[aNotOvers[counterNotOvers] = a[i]; counterNotOvers++]
-    AddOver --> Inc[i++]
+    B --> Init["counterOvers = 0, counterNotOvers = 0"]
+    Init --> C{"i < N"}
+    C -- Да --> CalcSum["Найти сумму делителей a[i]"]
+    CalcSum --> CheckOver{"a[i] > 0 И sum > a[i]?"}
+    CheckOver -- Да --> AddOver["aOvers[counterOvers] = a[i]; counterOvers++"]
+    CheckOver -- Нет --> AddNotOver["aNotOvers[counterNotOvers] = a[i]; counterNotOvers++"]
+    AddOver --> Inc["i++"]
     AddNotOver --> Inc
     Inc --> C
-    C -- Нет --> SortOver[Сортировка aOvers по возрастанию]
-    SortOver --> SortNotOver[Сортировка aNotOvers по убыванию]
-    SortNotOver --> Merge[Объединение массивов в a]
+    C -- Нет --> SortOver["Сортировка aOvers по возрастанию"]
+    SortOver --> SortNotOver["Сортировка aNotOvers по убыванию"]
+    SortNotOver --> Merge["Объединение массивов в a"]
     Merge --> Out1[/Вывод массива a/]
     Out1 --> Out2[/Вывод counterOvers/]
     Out2 --> Out3[/Вывод 'Избыточные' и 'nananan'/]
-    Out3 --> C2{j < N}
-    C2 -- Да --> CalcDiv[Посчитать кол-во делителей a[j]]
-    CalcDiv --> Replace[a[j] = кол-во делителей]
-    Replace --> Inc2[j++]
+    Out3 --> C2{"j < N"}
+    C2 -- Да --> CalcDiv["Посчитать кол-во делителей a[j]"]
+    CalcDiv --> Replace["a[j] = кол-во делителей"]
+    Replace --> Inc2["j++"]
     Inc2 --> C2
     C2 -- Нет --> Out4[/Вывод измененного массива a/]
     Out4 --> Z([Конец])
