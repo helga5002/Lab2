@@ -78,41 +78,34 @@
 **Блок-схема:**
 
 ```mermaid
+Вот код блок-схемы на языке Mermaid, переписанный строго в том стиле, который представлен на вашем скриншоте (без лишних стилей, с использованием стандартных обозначений форм и простых стрелок).
+
+```mermaid
 graph TD
-    Start([Начало]) --> Input[/Ввести N, массив a/]
-    Input --> Init[counterOvers = 0, counterNotOvers = 0]
-    Init --> LoopStart{i = 0; i < N; i++}
-    
-    LoopStart -- Да --> CalcSum[Найти сумму делителей a[i]]
+    A([Начало]) --> B[/Ввести: N и массив a/]
+    B --> Init[counterOvers = 0, counterNotOvers = 0]
+    Init --> C{i < N}
+    C -- Да --> CalcSum[Найти сумму делителей a[i]]
     CalcSum --> CheckOver{a[i] > 0 И sum > a[i]?}
-    
-    CheckOver -- Да --> AddOvers[aOvers[counterOvers] = a[i]; counterOvers++]
-    CheckOver -- Нет --> AddNotOvers[aNotOvers[counterNotOvers] = a[i]; counterNotOvers++]
-    
-    AddOvers --> LoopInc[i++]
-    AddNotOvers --> LoopInc
-    LoopInc --> LoopStart
-    
-    LoopStart -- Нет --> SortOvers[Сортировка aOvers по возрастанию]
-    SortOvers --> SortNotOvers[Сортировка aNotOvers по убыванию]
-    
-    SortNotOvers --> Merge[Объединение массивов в a]
-    Merge --> Output1[/Вывод массива a/]
-    Output1 --> Output2[/Вывод counterOvers/]
-    Output2 --> Output3[/Вывод строк с 'Избыточные' и 'nananan'/]
-    
-    Output3 --> Loop2Start{j = 0; j < N; j++}
-    Loop2Start -- Да --> CalcDiv[Посчитать кол-во делителей a[j]]
+    CheckOver -- Да --> AddOver[aOvers[counterOvers] = a[i]; counterOvers++]
+    CheckOver -- Нет --> AddNotOver[aNotOvers[counterNotOvers] = a[i]; counterNotOvers++]
+    AddOver --> Inc[i++]
+    AddNotOver --> Inc
+    Inc --> C
+    C -- Нет --> SortOver[Сортировка aOvers по возрастанию]
+    SortOver --> SortNotOver[Сортировка aNotOvers по убыванию]
+    SortNotOver --> Merge[Объединение массивов в a]
+    Merge --> Out1[/Вывод массива a/]
+    Out1 --> Out2[/Вывод counterOvers/]
+    Out2 --> Out3[/Вывод 'Избыточные' и 'nananan'/]
+    Out3 --> C2{j < N}
+    C2 -- Да --> CalcDiv[Посчитать кол-во делителей a[j]]
     CalcDiv --> Replace[a[j] = кол-во делителей]
-    Replace --> Loop2Inc[j++]
-    Loop2Inc --> Loop2Start
-    
-    Loop2Start -- Нет --> Output4[/Вывод измененного массива a/]
-    Output4 --> End([Конец])
-    
-    classDef default fill:#2d2d2d,stroke:#555,stroke-width:1px,color:#fff;
-    classDef decision fill:#2d2d2d,stroke:#888,stroke-width:1px,color:#fff,shape:diamond;
-    class LoopStart,CheckOver,Loop2Start decision;
+    Replace --> Inc2[j++]
+    Inc2 --> C2
+    C2 -- Нет --> Out4[/Вывод измененного массива a/]
+    Out4 --> Z([Конец])
+
 ```
 
 ### 6. Программа
